@@ -15,8 +15,10 @@ public class FinishScript : MonoBehaviour
     public int timeCalc;
     public int totalScored;
     public GameObject lvlLocker;
+    public GameObject fadeOut;
     void OnTriggerEnter()
     {
+        GetComponent<BoxCollider>().enabled = false;
         timeCalc = GlobalTimer.extendScore * 30;
         timeLeft.GetComponent<Text>().text = "Time left: " + GlobalTimer.extendScore + " x 30";
         theScore.GetComponent<Text>().text = "Gem Score: " + GlobalScore.currentScore;
@@ -40,7 +42,8 @@ public class FinishScript : MonoBehaviour
         yield return new WaitForSeconds(1);
         totalScore.SetActive(true);
         totalScores.SetActive(true);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(5);
+        fadeOut.SetActive(true);
     }
 
 }
